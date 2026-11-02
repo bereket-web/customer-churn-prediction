@@ -1,0 +1,22 @@
+{
+  "excluded_field": "status",
+  "uci_definition": "1=active, 2=non-active; timing relative to churn label is not stated clearly",
+  "pearson_correlation_with_churn": 0.49897561120776707,
+  "churn_rate_by_status": {
+    "1": {
+      "rows": 2368,
+      "churned": 125,
+      "churn_rate": 0.052787162162162164
+    },
+    "2": {
+      "rows": 782,
+      "churned": 370,
+      "churn_rate": 0.4731457800511509
+    }
+  },
+  "exclusion_reason": "potential outcome proxy and uncertain feature availability at prediction time",
+  "duplicate_input_profiles": 168,
+  "profiles_with_conflicting_churn_labels": 22,
+  "conflicting_profile_row_count": 83,
+  "handling": "Status is not used by the model; identical eligible input profiles are grouped across splits and conflicting labels are retained."
+}

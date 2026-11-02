@@ -1,0 +1,20 @@
+flowchart TB
+  subgraph Source["Data provenance"]
+    direction LR
+    A["UCI Iranian Churn<br/>CC BY 4.0"] --> B["Download + SHA-256"] --> C["Validate schema<br/>exclude ambiguous Status"] --> D["Group repeated input profiles"]
+  end
+  subgraph Evaluation["Leakage-aware evaluation"]
+    direction LR
+    E["Grouped development / held-out test"] --> F["Fold-fitted preprocessing<br/>usage feature engineering"] --> G["Prior baseline + four classifiers"] --> H["Grouped CV selection<br/>OOF threshold tuning"] --> I["Single held-out test<br/>metrics + error analysis"]
+  end
+  subgraph Inference["Inference and demo"]
+    direction LR
+    J["Saved local model"] --> K["FastAPI<br/>/predict + /explain"] --> L["Streamlit interactive demo"]
+  end
+  subgraph Reports["Evaluation artifacts"]
+    direction LR
+    M["PR curve"] --- N["Confusion matrix"] --- O["Permutation importance"]
+  end
+  D --> E
+  I --> J
+  I --> M

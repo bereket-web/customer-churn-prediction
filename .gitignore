@@ -1,0 +1,21 @@
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+build/
+dist/
+.ruff_cache/
+.pytest_cache/
+
+# UCI source archive and data cache are fetched locally; do not redistribute by default.
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Keep fitted artifacts and individual-level outputs local.
+models/*
+!models/.gitkeep
+reports/predictions.csv
+reports/*.joblib
+.env

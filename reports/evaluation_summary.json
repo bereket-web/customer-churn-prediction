@@ -1,0 +1,58 @@
+{
+  "dataset": {
+    "name": "Iranian Churn",
+    "uci_dataset_id": 563,
+    "source_url": "https://archive.ics.uci.edu/dataset/563/iranian+churn+dataset",
+    "license": "CC BY 4.0",
+    "rows": 3150,
+    "raw_columns_including_target_and_excluded_status": 14,
+    "model_input_features_before_engineering": 12,
+    "positive_label": "churn=1",
+    "positive_count": 495,
+    "positive_prevalence": 0.15714285714285714,
+    "raw_csv_sha256": "90d5fb6bd1630cd4de4b4d28fcf8b4cb92a8f6ab7484605b0799d47386f7dbe1",
+    "exact_duplicate_model_input_rows": 324,
+    "unique_model_input_profiles": 2826,
+    "duplicate_profile_rows_grouped_together": 324
+  },
+  "protocol": {
+    "random_seed": 2026,
+    "outer_split": "first fold of 5-fold StratifiedGroupKFold (80% development / 20% held-out test approximately)",
+    "inner_cv": "5-fold StratifiedGroupKFold on development partition",
+    "group_definition": "stable hash of all 12 model input fields; identical profiles never cross partitions",
+    "model_selection": "highest mean inner-fold average precision (average precision / stepwise PR-AUC)",
+    "threshold_selection": "maximum F1 on development-only out-of-fold probabilities for each candidate",
+    "test_usage": "single held-out evaluation; no test-driven model or threshold tuning",
+    "excluded_field": "status; UCI timing is ambiguous for this field and it is strongly associated with the outcome",
+    "data_timing": "UCI describes features as aggregated over months 1-9 and churn labels at month 12, with a 3-month planning gap",
+    "class_distribution_split": {
+      "development_churn_rate": 0.15708052360174535,
+      "test_churn_rate": 0.1573926868044515
+    }
+  },
+  "selected_model": "hist_gradient_boosting",
+  "selected_model_threshold": 0.38865056587022434,
+  "selected_model_test_metrics": {
+    "average_precision": 0.9568783185291326,
+    "roc_auc": 0.9912616733371451,
+    "threshold": 0.38865056587022434,
+    "precision": 0.8504672897196262,
+    "recall": 0.9191919191919192,
+    "f1": 0.883495145631068,
+    "accuracy": 0.9618441971383148,
+    "balanced_accuracy": 0.944501619973318,
+    "true_positive": 91,
+    "false_positive": 16,
+    "true_negative": 514,
+    "false_negative": 8,
+    "alert_rate": 0.17011128775834658
+  },
+  "artifacts": {
+    "model_comparison": "reports/model_comparison.csv",
+    "permutation_importance": "reports/permutation_importance.csv",
+    "leakage_audit": "reports/leakage_audit.json",
+    "precision_recall_plot": "reports/precision_recall.png",
+    "confusion_matrix_plot": "reports/confusion_matrix.png",
+    "model_bundle_local_only": "models/churn_model.joblib"
+  }
+}
